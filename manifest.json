@@ -32,6 +32,9 @@
       "description": "Search the web and return results with titles, URLs, and snippets"
     }
   ],
+  "compatibility": {
+    "platforms": ["darwin", "linux", "win32"]
+  },
   "user_config": {
     "brave_api_key": {
       "type": "string",
@@ -62,6 +65,9 @@
     "store.tool.mcpb": {
       "scripts": {
         "build": "cargo build --release"
+      },
+      "compatibility": {
+        "platforms": ["darwin-arm64", "darwin-x86_64", "linux-arm64", "linux-x86_64", "win32-arm64", "win32-x86_64"]
       },
       "static_responses": {
         "tools/list": {
