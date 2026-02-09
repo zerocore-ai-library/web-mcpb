@@ -66,8 +66,9 @@ jobs:
         run: |
           mkdir -p dist
           if [ -f "target/${{ matrix.rust_target }}/release/${BINARY_NAME}.exe" ]; then
-            cp "target/${{ matrix.rust_target }}/release/${BINARY_NAME}.exe" "dist/${BINARY_NAME}.exe"
-            echo "Created: dist/${BINARY_NAME}.exe"
+            # Copy without .exe extension to match manifest entry_point
+            cp "target/${{ matrix.rust_target }}/release/${BINARY_NAME}.exe" "dist/${BINARY_NAME}"
+            echo "Created: dist/${BINARY_NAME} (from .exe)"
           else
             cp "target/${{ matrix.rust_target }}/release/${BINARY_NAME}" "dist/${BINARY_NAME}"
             echo "Created: dist/${BINARY_NAME}"
