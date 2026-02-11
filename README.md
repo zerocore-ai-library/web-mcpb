@@ -2,6 +2,31 @@
 
 Web fetch and search tools for AI agents. Based on [Claude Code's WebFetch and WebSearch tool designs](https://gist.github.com/bgauryy/0cdb9aa337d01ae5bd0c803943aa36bd).
 
+## Setup
+
+### Building
+
+```bash
+cargo build --release
+```
+
+### Running
+
+```bash
+# Run the MCP server (stdio transport)
+./target/release/web
+```
+
+### Testing
+
+```bash
+# Run unit tests
+cargo test
+
+# Run integration tests (requires network)
+cargo test --test integration
+```
+
 ## Tools
 
 ### `fetch`
@@ -92,29 +117,6 @@ When installed via MCPB, configure API keys through the manifest:
 | Brave Search | https://brave.com/search/api/ |
 | Tavily | https://tavily.com/ |
 | SerpAPI | https://serpapi.com/ |
-
-## Building
-
-```bash
-cargo build --release
-```
-
-## Running
-
-```bash
-# Run the MCP server (stdio transport)
-./target/release/web
-```
-
-## Testing
-
-```bash
-# Run unit tests
-cargo test
-
-# Run integration tests (requires network)
-cargo test --test integration
-```
 
 ## License
 
