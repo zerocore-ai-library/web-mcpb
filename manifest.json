@@ -67,6 +67,8 @@
   },
   "_meta": {
     "store.tool.mcpb": {
+      "runtime": "rust",
+      "categories": ["search", "browsers-automation"],
       "scripts": {
         "build": "cargo build --release && mkdir -p dist && cp target/release/web dist/"
       },
