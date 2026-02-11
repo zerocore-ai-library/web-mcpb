@@ -120,4 +120,4 @@ When installed via MCPB, configure API keys through the manifest:
 
 ## License
 
-MIT
+Apache-2.0
