@@ -24,11 +24,11 @@
   },
   "tools": [
     {
-      "name": "web__fetch",
+      "name": "fetch",
       "description": "Fetch content from a URL and convert it to markdown"
     },
     {
-      "name": "web__search",
+      "name": "search",
       "description": "Search the web and return results with titles, URLs, and snippets"
     }
   ],
@@ -68,7 +68,7 @@
   "_meta": {
     "store.tool.mcpb": {
       "scripts": {
-        "build": "cargo build --release"
+        "build": "cargo build --release && mkdir -p dist && cp target/release/web dist/"
       },
       "compatibility": {
         "platforms": [
@@ -84,7 +84,7 @@
         "tools/list": {
           "tools": [
             {
-              "name": "web__fetch",
+              "name": "fetch",
               "description": "Fetch content from a URL and convert it to markdown",
               "input_schema": {
                 "type": "object",
@@ -140,7 +140,7 @@
               }
             },
             {
-              "name": "web__search",
+              "name": "search",
               "description": "Search the web and return results with titles, URLs, and snippets",
               "input_schema": {
                 "type": "object",

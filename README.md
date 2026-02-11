@@ -4,7 +4,7 @@ Web fetch and search tools for AI agents. Based on [Claude Code's WebFetch and W
 
 ## Tools
 
-### `web_fetch`
+### `fetch`
 
 Fetches content from a URL and converts HTML to markdown.
 
@@ -24,7 +24,7 @@ Fetches content from a URL and converts HTML to markdown.
 | `content_type` | string | MIME type |
 | `truncated` | boolean | Whether content was truncated |
 
-### `web_search`
+### `search`
 
 Searches the web using the best available provider.
 
