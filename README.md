@@ -4,27 +4,33 @@ Web fetch and search tools for AI agents. Based on [Claude Code's WebFetch and W
 
 ## Setup
 
-### Building
+### Using tool CLI
+
+Install the CLI from https://github.com/zerocore-ai/tool-cli
 
 ```bash
-cargo build --release
+# Install from tool.store
+tool install library/web
 ```
 
-### Running
-
 ```bash
-# Run the MCP server (stdio transport)
-./target/release/web
+# Configure API keys (optional but recommended)
+tool config set library/web brave_api_key=YOUR_BRAVE_API_KEY
 ```
 
-### Testing
+```bash
+# View available tools
+tool info library/web
+```
 
 ```bash
-# Run unit tests
-cargo test
+# Fetch a webpage
+tool call library/web -m fetch -p url="https://example.com"
+```
 
-# Run integration tests (requires network)
-cargo test --test integration
+```bash
+# Search the web
+tool call library/web -m search -p query="rust async programming"
 ```
 
 ## Tools
@@ -72,45 +78,29 @@ Searches the web using the best available provider.
 
 The server automatically selects the best available provider based on configured API keys:
 
-| Priority | Provider | Env Variable | Free Tier |
-|----------|----------|--------------|-----------|
-| 1 | Brave Search | `BRAVE_SEARCH_API_KEY` | 2000/month |
-| 2 | Tavily | `TAVILY_API_KEY` | 1000/month |
-| 3 | SerpAPI | `SERPAPI_API_KEY` | 100/month |
+| Priority | Provider | Config Key | Free Tier |
+|----------|----------|------------|-----------|
+| 1 | Brave Search | `brave_api_key` | 2000/month |
+| 2 | Tavily | `tavily_api_key` | 1000/month |
+| 3 | SerpAPI | `serpapi_api_key` | 100/month |
 | 4 | DuckDuckGo | (none) | Unreliable* |
 
 *DuckDuckGo uses HTML scraping and may trigger bot detection. Use an API-based provider for reliable results.
 
 ## Configuration
 
-### Environment Variables
-
-Set one or more API keys to enable reliable search:
+Configure API keys through the tool CLI:
 
 ```bash
 # Recommended - best free tier
-export BRAVE_SEARCH_API_KEY="your-brave-api-key"
+tool config set library/web brave_api_key=YOUR_BRAVE_API_KEY
 
 # Alternative providers
-export TAVILY_API_KEY="your-tavily-api-key"
-export SERPAPI_API_KEY="your-serpapi-api-key"
+tool config set library/web tavily_api_key=YOUR_TAVILY_API_KEY
+tool config set library/web serpapi_api_key=YOUR_SERPAPI_API_KEY
 ```
 
-### MCPB User Config
-
-When installed via MCPB, configure API keys through the manifest:
-
-```json
-{
-  "user_config": {
-    "brave_api_key": "your-brave-api-key",
-    "tavily_api_key": "your-tavily-api-key",
-    "serpapi_api_key": "your-serpapi-api-key"
-  }
-}
-```
-
-## Getting API Keys
+### Getting API Keys
 
 | Provider | Sign Up |
 |----------|---------|
